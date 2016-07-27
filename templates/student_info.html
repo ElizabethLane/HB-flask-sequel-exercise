@@ -12,6 +12,7 @@
     <ul>
     {% for project, grade in projects %}
         <li>Project Title: <a href="/project/{{project}}"> {{ project }}</a>, Project Grade: {{ grade }} </li> <br>
+        <!-- OR Project Title: <a href="/project?title={{title}}>" -->
     {% endfor %}
 
 </ul>

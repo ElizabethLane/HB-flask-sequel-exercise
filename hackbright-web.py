@@ -63,7 +63,7 @@ def create_student():
 @app.route("/project/<project_title>")
 def project_info(project_title):
 
-    # print project_title + "I'M IN THE PROJECTSSSS"
+    # OR project_title = request.args.get("title") and remove <> from route
 
     project_info = hackbright.get_project_by_title(project_title)
     # print project_info
