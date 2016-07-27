@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <ul> Students:
+        {% for student in githubs %}
+            <li> <a href="/student?github={{ student }}"> {{ student }} </a></li>
+        {% endfor %}
+    </ul> <br>
+    <ul>
+        {% for project in projects%}
+            <li>Project Title: <a href="/project/{{project}}"> {{ project }}</a>
+        {% endfor %}
+    </ul>
+</body>
+</html>

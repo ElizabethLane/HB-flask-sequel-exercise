@@ -33,6 +33,31 @@ def get_student_by_github(github):
                                                   row[2])
     return row
 
+def get_students():
+    """List all students"""
+
+    QUERY = """
+        SELECT github
+        FROM Students
+        """
+    db_cursor = db.session.execute(QUERY)
+    rows = db_cursor.fetchall()
+
+    return rows
+
+def get_projects():
+    """List all projects"""
+
+    QUERY = """
+        SELECT title 
+        FROM projects
+        """
+
+    db_cursor = db.session.execute(QUERY)
+    rows = db_cursor.fetchall()
+
+    return rows
+
 
 def make_new_student(first_name, last_name, github):
     """Add a new student and print confirmation.

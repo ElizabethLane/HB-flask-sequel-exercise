@@ -4,6 +4,16 @@ import hackbright
 
 app = Flask(__name__)
 
+@app.route("/homepage")
+def show_home_page():
+    """ Shows all students and all the projects in lists"""
+
+
+    githubs = [student[0] for student in hackbright.get_students()]
+    projects = [project[0] for project in hackbright.get_projects()]
+
+    return render_template("homepage.html", githubs = githubs, projects=projects)
+
 
 @app.route("/student-search")
 def get_student_form():
@@ -71,8 +81,13 @@ def project_info(project_title):
     description = project_info[1]
     max_grade = project_info[2]
 
+    QUERY = "SELECT student_github, grade FROM grades WHERE project_title = :title"
+
+    cursor = hackbright.db.session.execute(QUERY, {'title': title})
+    studentprojects = cursor.fetchall()
+
     html = render_template("projct.html", title = title, description=description,
-                           max_grade=max_grade)
+                           max_grade=max_grade, studentprojects=studentprojects)
 
     return html
 
